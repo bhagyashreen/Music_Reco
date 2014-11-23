@@ -1,0 +1,213 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>CartWheel</title>
+
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/bootstrap/bootstrap.js" /></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/bootstrap/bootstrap.min.js" /></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/bootstrap/bootstrap-dropdown.js" /></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/bootstrap/bootstrap-alert.js" /></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/bootstrap/bootstrap-button.js" /></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/bootstrap/bootstrap-carousel.js" /></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap/bootstrap-modal.js"/></script> 
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/bootstrap/bootstrap-scrollspy.js" /></script>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/bootstrap/bootstrap.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/bootstrap/bootstrap.min.css" />
+
+
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#subForm").validate();
+	});
+</script>
+<script
+	src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
+	
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#example').dataTable( {
+    	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p >>"
+    	//,"sPaginationType": "bootstrap"
+    });
+} );
+</script>
+<script>
+$.extend( $.fn.dataTableExt.oStdClasses, {
+    "sWrapper": "dataTables_wrapper form-inline"
+} );
+
+</script>
+
+<script type="text/javascript">
+	$(document).ready(
+			function() 
+			{
+			 $('#submit').click(
+								function(event) {
+								var Catalogname = $('#Catalogname').val();
+								var Productname = $('#Productname').val();
+								var description = $('#Description').val();
+								var price = $('#Price').val();
+								var quantity = $('#Quantity').val();
+
+			$.ajax({
+				url : "AdminPage.html",
+				type : "POST",
+				data : "Catalogname="+ Catalogname
+					 + "&Productname="Productname
+					 + "&description="description
+					 + "&price="+ price
+					 + "&quantity="+ quantity,
+																
+			success : function(data,textStatus,jqXHR) 
+							{
+							 window.location.href = "AdminPage.html";
+							},
+							 error : function(jqXHR,textStatus,errorThrown) 
+							 {
+							 alert("Could not process request.. "+ errorThrown);
+							 }
+						});
+					});
+				});
+	
+</script>
+
+<style type="text/css">
+#sidebar-list {
+	font-size: 14px;
+}
+</style>
+</head>
+<body >
+		<div id="page">
+		<div id="header">
+			<div>
+				<a href="index.html" class="logo"><img  src="images/cartwheel.jpg" alt="" ></a>
+				<ul class="navigation">
+					
+					<li>
+						<a href="about.html"><font color = "#8A0808" FONT FACE="algerian">About</font></a>
+					</li>
+					<li >
+						<a href="login.jsp"><font color = "#8A0808"FONT FACE="algerian">Logout</font></a>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+		<div id="body">
+<div class="container">
+	
+
+	<div class="navbar">
+              <div class="navbar-inner">
+                <div class="container">
+                 
+                </div>
+              </div>
+            </div>
+</div>
+
+	<div id="container" style="padding-top: 5px;padding-left: 300px;">
+		
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<p>
+					Please add new products.
+				</p>
+			</div>
+		</div>
+		
+		
+				<div>
+					<div class="tab-content">
+						<div class="tab-pane" id="AddNewProduct">
+							<table>
+							
+								<!--Body content-->
+								<tr>
+									<td><h5  style="font-size: 14px;height: 18px;">Catalog Name</h5></td>
+									<td></td>
+									<td><div>
+											<input type="text" id="Catalogname" style="width: 310px;" class="form-control">
+										</div></td>
+								</tr>
+								<tr>
+									<td><h5  style="font-size: 14px;height: 18px;">Product Name</h5></td>
+									<td></td>
+									<td><div>
+											<input type="text" style="width: 310px;" id="Productname"  class="form-control">
+										</div></td>
+								</tr>
+								<tr>
+									<td><h5  style="font-size: 14px;height: 18px;">Description</h5></td>
+									<td></td>
+									<td><div>
+											<textarea rows="4" class="required" style="width: 310px;" id="Description" ></textarea>
+										</div></td>
+								</tr>
+								
+								
+								<tr>
+									<td><h5  style="font-size: 14px;height: 18px;">Price</h5></td>
+									<td></td>
+									<td><div>
+											<input type="text" id="Price" style="width: 310px;"
+												class="form-control">
+										</div></td>
+								</tr>
+								<tr>
+									<td><h5  style="font-size: 14px;height: 18px;">Quantity</h5></td>
+									<td></td>
+									<td><div>
+											<input type="text" id="Quantity" style="width: 310px;"
+												class="form-control">
+										</div></td>
+								</tr>
+								<tr>
+								<td></td>
+								<td></td>
+									<td><div class="col-sm-offset-2 col-sm-10" style="margin-left: 100px ; margin-top: 15px ">
+											<input type="submit" class="btn btn-primary"
+												id="submit" value="Add Product" />
+										</div></td>
+								</tr>
+							</table>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	
+	</div>
+	<div id="footer">
+			<div>
+				
+				<span><font color = "#8A0808">&copy; 2014. <a href="HomePage.html"><font color = "#8A0808">CartWheel</a> all rights reserved</font></span> </div>
+		</div>
+	</div>
+
+</body>
+</html>
